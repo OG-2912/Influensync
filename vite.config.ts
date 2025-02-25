@@ -5,6 +5,13 @@ import path, { dirname } from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { fileURLToPath } from "url";
 
+// Import cartographer plugin conditionally
+let cartographerPlugin = [];
+if (process.env.NODE_ENV !== "production" && process.env.REPL_ID !== undefined) {
+  const cartographer = await import("@replit/vite-plugin-cartographer").then(m => m.cartographer);
+  cartographerPlugin = [cartographer()];
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -13,14 +20,7 @@ export default defineConfig({
     react(),
     runtimeErrorOverlay(),
     themePlugin(),
-    ...(process.env.NODE_ENV !== "production" &&
-    process.env.REPL_ID !== undefined
-      ? [
-          await import("@replit/vite-plugin-cartographer").then((m) =>
-            m.cartographer(),
-          ),
-        ]
-      : []),
+    ...cartographerPlugin, // Add cartographer plugin if conditions are met
   ],
   resolve: {
     alias: {
