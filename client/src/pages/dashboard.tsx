@@ -4,6 +4,7 @@ import { StatsCards } from "@/components/dashboard/stats-cards";
 import { EngagementChart } from "@/components/analytics/engagement-chart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { platforms, recentPosts, platformIcons } from "@/lib/mock-data";
+import { Badge } from "@/components/ui/badge";
 
 export default function Dashboard() {
   return (
@@ -13,10 +14,10 @@ export default function Dashboard() {
         <Header />
         <main className="flex-1 p-6 space-y-6 overflow-y-auto">
           <StatsCards />
-          
+
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <EngagementChart />
-            
+
             <Card className="col-span-2">
               <CardHeader>
                 <CardTitle>Recent Posts</CardTitle>
@@ -51,12 +52,19 @@ export default function Dashboard() {
                   {platforms.map(platform => {
                     const Icon = platformIcons[platform.id];
                     return (
-                      <div key={platform.id} className="flex items-center gap-4">
-                        <Icon className="h-5 w-5" />
-                        <span className="flex-1">{platform.name}</span>
-                        <span className={platform.connected ? "text-emerald-600" : "text-destructive"}>
+                      <div key={platform.id} className="flex items-center gap-4 p-3 rounded-lg border hover:bg-accent/50 transition-colors">
+                        <div className="p-2 bg-primary/10 rounded-full">
+                          <Icon className="h-6 w-6 text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <p className="font-medium">{platform.name}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {platform.followers.toLocaleString()} followers
+                          </p>
+                        </div>
+                        <Badge variant={platform.connected ? "default" : "destructive"} className="ml-auto">
                           {platform.connected ? "Connected" : "Not Connected"}
-                        </span>
+                        </Badge>
                       </div>
                     );
                   })}
