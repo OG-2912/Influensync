@@ -1,6 +1,12 @@
 {
   "variant": "professional",
-  "primary": "hsl(222.2 47.4% 11.2%)",
+  "primary": "hsl(264, 60%, 60%)",
   "appearance": "light",
-  "radius": 0.5
+  "radius": 0.5,
+  "charts": {
+    "purple": "hsl(264, 60%, 60%)",
+    "lightPurple": "hsl(264, 70%, 80%)",
+    "orange": "hsl(32, 95%, 60%)",
+    "lightOrange": "hsl(32, 95%, 80%)"
+  }
 }

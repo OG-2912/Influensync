@@ -24,8 +24,10 @@ export function EngagementChart() {
               <Line 
                 type="monotone" 
                 dataKey="engagement" 
-                stroke="hsl(var(--primary))" 
-                strokeWidth={2} 
+                stroke="hsl(32, 95%, 60%)" 
+                strokeWidth={2}
+                dot={{ fill: "hsl(264, 60%, 60%)", strokeWidth: 2, r: 4 }}
+                activeDot={{ fill: "hsl(264, 60%, 60%)", strokeWidth: 2, r: 6 }}
               />
             </LineChart>
           </ResponsiveContainer>

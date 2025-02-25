@@ -24,7 +24,7 @@ export default function Analytics() {
                       <XAxis dataKey="name" />
                       <YAxis />
                       <Tooltip />
-                      <Bar dataKey="engagement" fill="hsl(var(--primary))" />
+                      <Bar dataKey="engagement" fill="hsl(264, 60%, 60%)" />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -48,7 +48,7 @@ export default function Analytics() {
                       <Line 
                         type="monotone" 
                         dataKey="followers" 
-                        stroke="hsl(var(--primary))" 
+                        stroke="hsl(32, 95%, 60%)"
                         strokeWidth={2}
                       />
                     </LineChart>
@@ -71,7 +71,7 @@ export default function Analytics() {
                       />
                       <YAxis />
                       <Tooltip />
-                      <Bar dataKey="posts" fill="hsl(var(--primary))" />
+                      <Bar dataKey="posts" fill="hsl(264, 70%, 80%)" />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
