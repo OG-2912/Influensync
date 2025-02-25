@@ -10,10 +10,11 @@ import { insertUserSchema } from "@shared/schema";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Loader2 } from "lucide-react";
 import { Redirect } from "wouter";
+import { Logo } from "@/components/ui/logo"; // Fixed import path
 
 export default function AuthPage() {
   const { user, loginMutation, registerMutation } = useAuth();
-  
+
   const loginForm = useForm({
     defaultValues: {
       username: "",
@@ -36,14 +37,15 @@ export default function AuthPage() {
   }
 
   return (
-    <div className="min-h-screen flex">
-      <div className="flex-1 flex items-center justify-center">
-        <Card className="w-[400px]">
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold">Welcome to InfluenSync</CardTitle>
+    <div className="min-h-screen flex flex-col lg:flex-row">
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+        <Card className="w-full max-w-[400px]">
+          <CardHeader className="text-center space-y-4">
+            <Logo showImage={true} imageSize="lg" className="justify-center" />
+            <CardTitle className="text-xl sm:text-2xl font-bold">Welcome to InfluenSync</CardTitle>
           </CardHeader>
           <CardContent>
-            <Tabs defaultValue="login">
+            <Tabs defaultValue="login" className="w-full">
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="login">Login</TabsTrigger>
                 <TabsTrigger value="register">Register</TabsTrigger>
@@ -139,11 +141,11 @@ export default function AuthPage() {
           </CardContent>
         </Card>
       </div>
-      <div className="hidden lg:flex flex-1 relative bg-muted">
+      <div className="hidden lg:flex flex-1 relative bg-muted overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-primary/5">
-          <div className="p-12">
-            <h1 className="text-4xl font-bold">Streamline Your Social Media Presence</h1>
-            <p className="mt-4 text-lg text-muted-foreground">
+          <div className="p-8 lg:p-12">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold">Streamline Your Social Media Presence</h1>
+            <p className="mt-4 text-sm sm:text-base lg:text-lg text-muted-foreground max-w-md">
               Connect and manage all your social media accounts in one place. 
               Schedule posts, track engagement, and grow your audience with InfluenSync.
             </p>
@@ -151,7 +153,7 @@ export default function AuthPage() {
           <img 
             src="https://images.unsplash.com/photo-1524114051012-0a2aa8dae4e1"
             alt="Dashboard Preview"
-            className="absolute bottom-0 right-0 w-3/4 rounded-tl-3xl shadow-2xl"
+            className="absolute bottom-0 right-0 w-full md:w-3/4 rounded-tl-3xl shadow-2xl transform transition-transform hover:scale-105"
           />
         </div>
       </div>
