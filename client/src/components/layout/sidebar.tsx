@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Home, BarChart2, FileText, Settings, LogOut } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
+import { Logo } from "@/components/ui/logo";
 
 const sidebarItems = [
   { name: "Dashboard", href: "/", icon: Home },
@@ -16,9 +17,9 @@ export function Sidebar() {
   const { logoutMutation } = useAuth();
 
   return (
-    <div className="h-screen border-r bg-sidebar flex flex-col">
+    <div className="h-screen border-r bg-white/50 backdrop-blur-sm flex flex-col">
       <div className="p-6">
-        <h1 className="text-2xl font-bold text-sidebar-foreground">InfluenSync</h1>
+        <Logo />
       </div>
       <ScrollArea className="flex-1 px-4">
         <nav className="space-y-2">
@@ -30,7 +31,7 @@ export function Sidebar() {
                   variant="ghost"
                   className={cn(
                     "w-full justify-start gap-2",
-                    location === item.href && "bg-sidebar-accent text-sidebar-accent-foreground"
+                    location === item.href && "bg-primary/10 text-primary"
                   )}
                 >
                   <Icon className="h-4 w-4" />
